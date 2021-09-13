@@ -34,6 +34,8 @@ export class UsersListComponent implements OnInit {
     const factory = this.componentFactoryResolver.resolveComponentFactory<NewUserFormComponent>(NewUserFormComponent);
     const component = this.container.createComponent(factory);
 
+    let lastId = this.users.length;
+    component.instance.lastId = lastId +1 ;
     component.instance.onSave.subscribe(
       (next: User) => {
         console.log(next);

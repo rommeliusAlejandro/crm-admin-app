@@ -20,13 +20,16 @@ export class NewUserFormComponent implements OnInit {
     lastName: ''
   };
 
+  @Input()
+  lastId!: number;
+
   constructor() {}
 
   ngOnInit(): void {
   }
 
   createUser() {
-    this.user.id = `${Math.random()}`
+    this.user.id = `${this.lastId}`;
     this.onSave.emit(this.user);
   }
 
