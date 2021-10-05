@@ -13,6 +13,8 @@ export class LoginFormComponent implements OnInit {
   email!: string;
   password!: string;
 
+  invalidDetails: boolean = false;
+
   constructor(
     private readonly router: Router,
     private readonly usersService: UserService
@@ -24,7 +26,11 @@ export class LoginFormComponent implements OnInit {
   login() {
     this.usersService.authenticate(this.email, this.password)
       .subscribe(session => {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home']);
+        this.invalidDetails = false;
+      },
+      error => {
+        this.invalidDetails = true;
       });
   }
 

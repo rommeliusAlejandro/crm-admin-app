@@ -3,21 +3,27 @@
     <div class="col-md-4">
       <div class="input-group flex-nowrap">
         <span class="input-group-text" >@</span>
-        <input type="text" class="form-control" [(ngModel)]="email" />
+        <input type="text" class="form-control" [(ngModel)]="email" id="emailField" />
       </div>
     </div>
     <div class="col-md-4">
       <div class="input-group flex-nowrap">
         <span class="input-group-text">?</span>
-        <input type="password" class="form-control" [(ngModel)]="password" />
+        <input type="password" class="form-control" [(ngModel)]="password" id="passwordField" />
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4">
       <div style="margin-top: 10px">
-        <button class="btn-primary" (click)="login()">Login</button>
+        <button class="btn-primary" (click)="login()" id="loginButton">Login</button>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-4" *ngIf="invalidDetails">
+      <span class="alert-danger" id="invalidAlert">Invalid login details</span>
+    </div>
+  </div>
 </div>
+
